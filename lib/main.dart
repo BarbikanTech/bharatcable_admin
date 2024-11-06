@@ -1,5 +1,4 @@
-import 'package:bharatcable_admin/view/auth/login_view.dart';
-import 'package:bharatcable_admin/view/collection/collection_view.dart';
+import 'package:bharatcable_admin/view/landing_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,8 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff40beee)),
         useMaterial3: true,
       ),
-      //home: isLogin ? const LandingView() : const LoginView(),
-      home: const CollectionView(),
+      home: const LandingView(),
     );
   }
 }

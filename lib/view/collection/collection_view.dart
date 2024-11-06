@@ -14,9 +14,9 @@ class _CollectionViewState extends State<CollectionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFFFFFF),
+      backgroundColor: const Color(0xffFFFFFF),
       appBar: AppBar(
-        title: Text("Collections"),
+        title: const Text("Collections"),
         centerTitle: false,
       ),
       body: Padding(
@@ -27,7 +27,7 @@ class _CollectionViewState extends State<CollectionView> {
               controller: search,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Color(0xffF5F5F5),
+                fillColor: const Color(0xffF5F5F5),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                 hintText: 'Search',
                 hintStyle: const TextStyle(fontSize: 18),
@@ -101,7 +101,7 @@ class _CollectionViewState extends State<CollectionView> {
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Color(0xff0080E9), Color(0xffA6D7FF)])),
-              child: Row(
+              child: const Row(
                 children: [
                   Column(
                     children: [
