@@ -91,7 +91,7 @@ class _LoginViewState extends State<LoginView> {
                               prefixIcon: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(Icons.phone),
+                                  const Icon(Icons.phone),
                                   Container(
                                     height: 20,
                                     width: 1,
