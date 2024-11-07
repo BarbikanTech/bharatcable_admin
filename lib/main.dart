@@ -1,8 +1,9 @@
 import 'package:bharatcable_admin/view/Report/report_view.dart';
-import 'package:bharatcable_admin/view/auth/login_view.dart';
 import 'package:bharatcable_admin/view/collection/collection_view.dart';
-import 'package:bharatcable_admin/view/landing_view.dart';
+
 import 'package:flutter/material.dart';
+
+import 'view/landing_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: isLogin ? const LandingView() : const LoginView(),
-      home: const LandingView(),
+      home: ReportView(),
     );
   }
 }
