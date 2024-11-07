@@ -8,7 +8,7 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardViewState extends State<DashboardView> {
-  TextEditingController _searchController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _DashboardViewState extends State<DashboardView> {
           children: [
             // Search Bar
             TextField(
-              controller: _searchController,
+              controller: searchController,
               decoration: InputDecoration(
                 hintText: 'Search',
                 prefixIcon: const Icon(Icons.search),

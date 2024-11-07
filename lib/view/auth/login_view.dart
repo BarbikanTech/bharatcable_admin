@@ -1,5 +1,6 @@
-import 'package:bharatcable_admin/view/landing_view.dart';
 import 'package:flutter/material.dart';
+
+import '../landing_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

@@ -10,7 +10,7 @@ class ReportView extends StatefulWidget {
 }
 
 class _ReportViewState extends State<ReportView> {
-  String? _selectedPaymentMethod;
+  String? selectedPaymentMethod;
   int? _selectedRadio = 1;
 
   // Function to handle changes to the radio button
@@ -23,7 +23,7 @@ class _ReportViewState extends State<ReportView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFFFFFF),
+      backgroundColor: const Color(0xffFFFFFF),
       appBar: AppBar(
         title: const Text(
           "Reports",
@@ -38,12 +38,12 @@ class _ReportViewState extends State<ReportView> {
           bottom: 10,
         ),
         children: [
-          Container(
+          SizedBox(
             // width: double.infinity,
             // height: 250,
             child: Row(
               children: [
-                Container(
+                SizedBox(
                   width: 254.56,
                   height: 254.56,
                   child: AspectRatio(
