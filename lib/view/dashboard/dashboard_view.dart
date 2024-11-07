@@ -25,7 +25,7 @@ class _DashboardViewState extends State<DashboardView> {
     return Scaffold(
       backgroundColor: const Color(0xffFFFFFF),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40), // Adjust the height of AppBar
+        preferredSize: const Size.fromHeight(40), // Adjust the height of AppBar
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white, // AppBar background color
@@ -36,7 +36,7 @@ class _DashboardViewState extends State<DashboardView> {
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
-                offset: Offset(0, 4),
+                offset: const Offset(0, 4),
                 blurRadius: 8,
               ),
             ],
@@ -47,7 +47,7 @@ class _DashboardViewState extends State<DashboardView> {
               height: 30, // Adjust size as needed
             ),
             centerTitle: false,
-            leading: SizedBox(),
+            leading: const SizedBox(),
             leadingWidth: 10,
             backgroundColor:
                 Colors.transparent, // Make the AppBar background transparent
@@ -157,23 +157,24 @@ class _DashboardViewState extends State<DashboardView> {
                 height: 300,
                 width: 390,
                 decoration: BoxDecoration(
-                    color: Color(0xffF2F2F2),
+                    color: const Color(0xffF2F2F2),
                     borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   children: [
                     Row(
                       children: [
                         const Text("Collection Amount"),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           padding: const EdgeInsets.only(
                               left: 10, right: 05, top: 05, bottom: 05),
                           height: 30,
                           width: 101,
-                          decoration: BoxDecoration(color: Color(0xffFFFFFF)),
+                          decoration:
+                              const BoxDecoration(color: Color(0xffFFFFFF)),
                           child: const Row(
                             children: [
-                              const Text("Monthly"),
+                              Text("Monthly"),
                               Spacer(),
                               Icon(Icons.keyboard_arrow_down),
                             ],
@@ -186,7 +187,7 @@ class _DashboardViewState extends State<DashboardView> {
                       height: 250,
                       child: Row(
                         children: [
-                          Container(
+                          SizedBox(
                             width: 200.56,
                             height: 200.56,
                             child: AspectRatio(

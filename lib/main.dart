@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           appBarTheme: const AppBarTheme(surfaceTintColor: Colors.white)),
       //home: isLogin ? const LandingView() : const LoginView(),
-      home: const LoginView(),
+      home: const LoginpageView(),
     );
   }
 }

@@ -3,7 +3,6 @@ import 'package:bharatcable_admin/view/collection/collection_view.dart';
 import 'package:bharatcable_admin/view/dashboard/dashboard_view.dart';
 import 'package:flutter/material.dart';
 
-import 'Report/report_view.dart';
 import 'customer/customer_list_view.dart';
 import 'plan/plan_list_view.dart';
 
