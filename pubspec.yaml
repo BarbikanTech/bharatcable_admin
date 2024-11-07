@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   iconsax: ^0.0.8
   d_chart: ^2.10.2
+  fl_chart: ^0.69.0
   
 
 dev_dependencies:
