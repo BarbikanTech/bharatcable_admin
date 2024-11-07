@@ -238,109 +238,12 @@ class _DashboardViewState extends State<DashboardView> {
                 ),
               ),
 
-              // Container(
-              //   padding: const EdgeInsets.all(16.0),
-              //   decoration: BoxDecoration(
-              //     color: Colors.white,
-              //     borderRadius: BorderRadius.circular(8.0),
-              //     boxShadow: [
-              //       BoxShadow(
-              //         color: Colors.grey.withOpacity(0.3),
-              //         spreadRadius: 2,
-              //         blurRadius: 5,
-              //         offset: const Offset(0, 3),
-              //       ),
-              //     ],
-              //   ),
-              //   child: Column(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: [
-              //       Row(
-              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //         children: [
-              //           const Text(
-              //             "Collection Amount",
-              //             style: TextStyle(
-              //               fontSize: 18,
-              //               fontWeight: FontWeight.bold,
-              //             ),
-              //           ),
-              //           DropdownButton<String>(
-              //             value: selectedPeriod,
-              //             items: <String>['Monthly', 'Weekly', 'Yearly']
-              //                 .map((String value) {
-              //               return DropdownMenuItem<String>(
-              //                 value: value,
-              //                 child: Text(value),
-              //               );
-              //             }).toList(),
-              //             onChanged: (String? newValue) {
-              //               setState(() {
-              //                 selectedPeriod = newValue!;
-              //               });
-              //             },
-              //           ),
-              //         ],
-              //       ),
-              //       const SizedBox(height: 20),
-              //       Row(
-              //         children: [
-              //           Container(
-              //             width: 225.56,
-              //             height: 225.56,
-              //             child: AspectRatio(
-              //               aspectRatio: 1,
-              //               child: PieChart(
-              //                 PieChartData(
-              //                   sectionsSpace: 4,
-              //                   centerSpaceRadius: 0,
-              //                   sections: _buildPieChartSections(),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //           Expanded(
-              //             child: Column(
-              //               mainAxisAlignment: MainAxisAlignment.center,
-              //               crossAxisAlignment: CrossAxisAlignment.center,
-              //               children: [
-              //                 Row(
-              //                   children: [
-              //                     Radio<int>(
-              //                       activeColor: const Color(0xff0080E9),
-              //                       value: 1,
-              //                       groupValue: _selectedRadio,
-              //                       onChanged: _handleRadioValueChange,
-              //                     ),
-              //                     const Text('UnPaid'),
-              //                   ],
-              //                 ),
-              //                 Row(
-              //                   children: [
-              //                     Radio<int>(
-              //                       activeColor: const Color(0xff0080E9),
-              //                       value: 2,
-              //                       groupValue: _selectedRadio,
-              //                       onChanged: _handleRadioValueChange,
-              //                     ),
-              //                     const Text('Paid'),
-              //                   ],
-              //                 ),
-              //               ],
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // ),
-
               const SizedBox(height: 20),
               Container(
                 height: 70,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3),
+                  borderRadius: BorderRadius.circular(10.0),
                   color: const Color(0xffD5ECFF),
                 ),
                 child: const Row(
@@ -366,7 +269,7 @@ class _DashboardViewState extends State<DashboardView> {
                 height: 70,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3),
+                  borderRadius: BorderRadius.circular(10.0),
                   color: const Color(0xffD5ECFF),
                 ),
                 child: const Row(

@@ -4,6 +4,8 @@ import 'package:bharatcable_admin/view/dashboard/dashboard_view.dart';
 import 'package:flutter/material.dart';
 
 import 'Report/report_view.dart';
+import 'customer/customer_list_view.dart';
+import 'plan/plan_list_view.dart';
 
 class LandingView extends StatefulWidget {
   const LandingView({super.key});
@@ -16,11 +18,11 @@ class _LandingViewState extends State<LandingView> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    DashboardView(),
-    const Center(child: Text('Customer')),
-    const Center(child: Text('Plans')),
+    const DashboardView(),
+    const CustomerListView(),
+    const PlanListView(),
     const CollectionView(),
-    ReportView(),
+    const ReportView(),
   ];
 
   void _onItemTapped(int index) {
