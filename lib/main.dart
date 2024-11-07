@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: isLogin ? const LandingView() : const LoginView(),
-      home: LoginView(),
+      home: const LoginView(),
     );
   }
 }
