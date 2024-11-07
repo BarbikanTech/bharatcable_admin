@@ -65,7 +65,7 @@ class _CollectionViewState extends State<CollectionView> {
                               fontSize: 14, fontWeight: FontWeight.w400),
                         ),
                         Spacer(),
-                        Icon(Icons.arrow_drop_down)
+                        Icon(Icons.keyboard_arrow_down)
                       ],
                     ),
                   ),
@@ -73,7 +73,7 @@ class _CollectionViewState extends State<CollectionView> {
                   Container(
                     padding: const EdgeInsets.only(left: 20, right: 20),
                     height: 50,
-                    width: 150,
+                    width: 160,
                     decoration: BoxDecoration(
                         border: Border.all(
                           color: const Color(0xffEEEEEE),
@@ -87,7 +87,7 @@ class _CollectionViewState extends State<CollectionView> {
                               fontSize: 14, fontWeight: FontWeight.w400),
                         ),
                         Spacer(),
-                        Icon(Icons.arrow_drop_down)
+                        Icon(Icons.keyboard_arrow_down)
                       ],
                     ),
                   ),
