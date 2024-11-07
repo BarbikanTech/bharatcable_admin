@@ -1,5 +1,5 @@
-import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 // ignore: depend_on_referenced_packages
 class ReportView extends StatefulWidget {
@@ -11,50 +11,85 @@ class ReportView extends StatefulWidget {
 
 class _ReportViewState extends State<ReportView> {
   String? _selectedPaymentMethod;
+  int? _selectedRadio = 1;
+
+  // Function to handle changes to the radio button
+  void _handleRadioValueChange(int? value) {
+    setState(() {
+      _selectedRadio = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffFFFFFF),
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Reports",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
         centerTitle: false,
       ),
       body: ListView(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.only(
+          left: 15,
+          right: 15,
+          bottom: 10,
+        ),
         children: [
-          // Row(
-          //   children: [
-          //     Container(),
-          //     Column(
-          //       children: [
-          //         RadioListTile<String>(
-          //           title: Text('Unpaid'),
-          //           value: 'unpaid',
-          //           groupValue: _selectedPaymentMethod,
-          //           onChanged: (value) {
-          //             setState(() {
-          //               _selectedPaymentMethod = value;
-          //             });
-          //           },
-          //         ),
-          //         RadioListTile<String>(
-          //           title: Text('Paid'),
-          //           value: 'Paid',
-          //           groupValue: _selectedPaymentMethod,
-          //           onChanged: (value) {
-          //             setState(() {
-          //               _selectedPaymentMethod = value;
-          //             });
-          //           },
-          //         ),
-          //       ],
-          //     )
-          //   ],
-          // ),
+          Container(
+            // width: double.infinity,
+            // height: 250,
+            child: Row(
+              children: [
+                Container(
+                  width: 254.56,
+                  height: 254.56,
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: PieChart(
+                      PieChartData(
+                        sectionsSpace: 4,
+                        centerSpaceRadius: 0,
+                        sections: _buildPieChartSections(),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 140,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ListTile(
+                        title: const Text('UnPaid'),
+                        leading: Radio<int>(
+                          activeColor: const Color(0xff0080E9),
+                          value: 1,
+                          groupValue: _selectedRadio,
+                          onChanged: _handleRadioValueChange,
+                        ),
+                      ),
+                      ListTile(
+                        title: const Text('Paid'),
+                        leading: Radio<int>(
+                          activeColor: const Color(0xff0080E9),
+                          value: 2,
+                          groupValue: _selectedRadio,
+                          onChanged: _handleRadioValueChange,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
 
+                // ListTile for 'Paid'
+              ],
+            ),
+          ),
           Row(
             children: [
               Container(
@@ -102,49 +137,6 @@ class _ReportViewState extends State<ReportView> {
               ),
             ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          // Container(
-          //   padding: const EdgeInsets.all(30),
-          //   height: 111,
-          //   width: 390,
-          //   decoration: const BoxDecoration(
-          //       gradient: LinearGradient(
-          //           colors: [Color(0xff0080E9), Color(0xffA6D7FF)]),
-          //       borderRadius: BorderRadius.all(Radius.circular(10))),
-          //   child: const Row(
-          //     children: [
-          //       Column(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: [
-          //           Text(
-          //             "Total Collection",
-          //             style: TextStyle(
-          //                 color: Color(0xffFFFFFF),
-          //                 fontSize: 16,
-          //                 fontWeight: FontWeight.w500),
-          //           ),
-          //           Text(
-          //             "Amount",
-          //             style: TextStyle(
-          //                 color: Color(0xffFFFFFF),
-          //                 fontSize: 16,
-          //                 fontWeight: FontWeight.w500),
-          //           ),
-          //         ],
-          //       ),
-          //       Spacer(),
-          //       Text(
-          //         "₹ 43, 988",
-          //         style: TextStyle(
-          //             color: Color(0xffFFFFFF),
-          //             fontSize: 24,
-          //             fontWeight: FontWeight.w600),
-          //       )
-          //     ],
-          //   ),
-          // ),
           const SizedBox(
             height: 10,
           ),
@@ -200,14 +192,14 @@ class _ReportViewState extends State<ReportView> {
                         ),
                         const Row(
                           children: [
-                            const Text(
+                            Text(
                               "Box no :0002",
                               style: TextStyle(
                                   color: Color(0xff5B5B5B),
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400),
                             ),
-                            const Spacer(),
+                            Spacer(),
                             Text(
                               "₹ 210",
                               style: TextStyle(
@@ -225,5 +217,34 @@ class _ReportViewState extends State<ReportView> {
         ],
       ),
     );
+  }
+
+  List<PieChartSectionData> _buildPieChartSections() {
+    return [
+      PieChartSectionData(
+          color: const Color(0xffFFFFFF),
+          value: 78,
+          title: '78%',
+          radius: 70,
+          titleStyle: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff0080E9),
+          ),
+          titlePositionPercentageOffset: 0.4,
+          borderSide: const BorderSide(color: Color(0xff0080E9))),
+      PieChartSectionData(
+        color: const Color(0xff0080E9),
+        value: 22,
+        title: '22%',
+        radius: 70,
+        titleStyle: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        titlePositionPercentageOffset: 0.6,
+      ),
+    ];
   }
 }
