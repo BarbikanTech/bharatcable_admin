@@ -1,167 +1,4 @@
-// import 'package:flutter/material.dart';
-
-// class LoginView extends StatefulWidget {
-//   const LoginView({super.key});
-
-//   @override
-//   State<LoginView> createState() => _LoginViewState();
-// }
-
-// class _LoginViewState extends State<LoginView> {
-//   final _formKey = GlobalKey<FormState>();
-//   bool _rememberMe = false;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SingleChildScrollView(
-//         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-//           ClipRRect(
-//             borderRadius: const BorderRadius.vertical(
-//               bottom: Radius.circular(20.0),
-//             ),
-//             child: Container(
-//               height: 100, // Set your preferred height here
-//               decoration: const BoxDecoration(
-//                 color: Color(0xffe0b21b),
-//               ),
-//               child: AppBar(
-//                 toolbarHeight:
-//                     80, // Match the AppBar height to the Container height
-//                 backgroundColor: Colors.transparent, // Make AppBar transparent
-//                 title: const Text('Bharath Cable'),
-//                 // Center the title
-//               ),
-//             ),
-//           ),
-//           const SizedBox(height: 70),
-//           const Padding(
-//             padding: EdgeInsets.all(10.0),
-//             child: Padding(
-//               padding: EdgeInsets.all(15.0),
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   SizedBox(
-//                     height: 30,
-//                     child: Text(
-//                       'Welcome Back  ',
-//                       style: TextStyle(
-//                         fontSize: 24.0,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                   ),
-//                   SizedBox(
-//                       height: 40,
-//                       child: Text(
-//                         "Please enter your details",
-//                         style: TextStyle(
-//                           fontSize: 16.0,
-//                         ),
-//                       ))
-//                 ],
-//               ),
-//             ),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-//             child: Form(
-//               key: _formKey,
-//               child: Column(children: [
-//                 TextFormField(
-//                   decoration: const InputDecoration(
-//                     labelText: 'Email Address',
-//                     border: OutlineInputBorder(),
-//                   ),
-//                   keyboardType: TextInputType.emailAddress,
-//                   validator: (value) {
-//                     if (value == null || value.isEmpty) {
-//                       return 'Please enter your email';
-//                     }
-//                     return null;
-//                   },
-//                 ),
-//                 const SizedBox(height: 40), // Space between fields
-
-//                 // Password TextFormField
-//                 TextFormField(
-//                   decoration: const InputDecoration(
-//                     labelText: 'Password',
-//                     border: OutlineInputBorder(),
-//                   ),
-//                   obscureText: true, // For password input
-//                   validator: (value) {
-//                     if (value == null || value.isEmpty) {
-//                       return 'Please enter your password';
-//                     }
-//                     return null;
-//                   },
-//                 ),
-//                 SizedBox(
-//                   height: 80,
-//                   child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       Row(
-//                         children: [
-//                           Checkbox(
-//                             value: _rememberMe,
-//                             onChanged: (value) {
-//                               setState(() {
-//                                 _rememberMe =
-//                                     value ?? false; // Toggle remember me
-//                               });
-//                             },
-//                           ),
-//                           const Text('Remember Me'),
-//                         ],
-//                       ),
-//                       TextButton(
-//                         onPressed: () {
-//                           // Handle forget password action
-//                         },
-//                         child: const Text(
-//                           'Forgot Password?',
-//                           style: TextStyle(
-//                             color: Colors.blue,
-//                           ),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//                 SizedBox(
-//                   height: 60,
-//                   width: double.infinity,
-//                   child: ElevatedButton(
-//                     onPressed: () {
-//                       // Handle login action here
-//                     },
-//                     style: ElevatedButton.styleFrom(
-//                       padding: const EdgeInsets.symmetric(vertical: 15.0),
-//                       shape: RoundedRectangleBorder(
-//                         borderRadius: BorderRadius.circular(10.0),
-//                       ),
-//                       backgroundColor: const Color(0xffe0b21b),
-//                     ),
-//                     child: const Text(
-//                       'Login',
-//                       style: TextStyle(
-//                         fontSize: 18.0,
-//                         color: Colors.black,
-//                       ),
-//                     ),
-//                   ),
-//                 )
-//               ]),
-//             ),
-//           ),
-//         ]),
-//       ),
-//     );
-//   }
-// }
+import 'package:bharatcable_admin/view/landing_view.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
@@ -172,6 +9,10 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  final TextEditingController _mobileController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _obscurePassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -179,12 +20,175 @@ class _LoginViewState extends State<LoginView> {
         title: const Image(image: AssetImage("assets/logo.png")),
         centerTitle: true,
       ),
-      body: Container(
-        height: 100,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            //color: Colors.black,
-            image: DecorationImage(image: AssetImage("assets/cable.png"))),
+      body: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/back.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 18.0),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Image.asset(
+                        "assets/cable.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 40),
+                const Text(
+                  "Login",
+                  style: TextStyle(fontSize: 25),
+                ),
+                const Text(
+                  "Let fill up this form and fill it correctly",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                ),
+                const SizedBox(height: 10),
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                  child: Container(
+                    height: 315,
+                    padding: const EdgeInsets.all(20),
+                    color: const Color(0xffE8F4FF).withOpacity(0.8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Mobile Number",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: TextFormField(
+                            controller: _mobileController,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              hintText: 'Enter your mobile number',
+                              prefixIcon: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.phone),
+                                  Container(
+                                    height: 20,
+                                    width: 1,
+                                    color: Colors.black,
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                  ),
+                                ],
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        const Text(
+                          "Password",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: TextFormField(
+                            controller: _passwordController,
+                            obscureText: _obscurePassword,
+                            decoration: InputDecoration(
+                              hintText: 'Enter your password',
+                              prefixIcon: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.lock),
+                                  Container(
+                                    height: 20,
+                                    width: 1,
+                                    color: Colors.black,
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                  ),
+                                ],
+                              ),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscurePassword
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscurePassword = !_obscurePassword;
+                                  });
+                                },
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Center(
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LandingView()));
+                              },
+                              child: const Text(
+                                "Get Started",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
