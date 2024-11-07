@@ -270,7 +270,7 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardViewState extends State<DashboardView> {
-  TextEditingController _searchController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
   String selectedPeriod = 'Monthly';
   String selectedStatus = 'Unpaid';
 

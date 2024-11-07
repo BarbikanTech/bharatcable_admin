@@ -2,6 +2,8 @@ import 'package:bharatcable_admin/view/collection/collection_view.dart';
 import 'package:bharatcable_admin/view/dashboard/dashboard_view.dart';
 import 'package:flutter/material.dart';
 
+import 'Report/report_view.dart';
+
 class LandingView extends StatefulWidget {
   const LandingView({super.key});
 
@@ -17,7 +19,7 @@ class _LandingViewState extends State<LandingView> {
     const Center(child: Text('Customer')),
     const Center(child: Text('Plans')),
     const CollectionView(),
-    const Center(child: Text('Reports')),
+    ReportView(),
   ];
 
   void _onItemTapped(int index) {
