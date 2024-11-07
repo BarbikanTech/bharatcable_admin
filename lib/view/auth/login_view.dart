@@ -18,8 +18,8 @@ class _LoginViewState extends State<LoginView> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(
-              bottom: Radius.circular(20.0),
-            ),
+                // bottom: Radius.circular(10.0),
+                ),
             child: Container(
               height: 100, // Set your preferred height here
               decoration: const BoxDecoration(
@@ -109,8 +109,7 @@ class _LoginViewState extends State<LoginView> {
                             value: _rememberMe,
                             onChanged: (value) {
                               setState(() {
-                                _rememberMe =
-                                    value ?? false; // Toggle remember me
+                                _rememberMe = value ?? false;
                               });
                             },
                           ),
