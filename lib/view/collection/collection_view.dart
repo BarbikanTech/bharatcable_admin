@@ -179,14 +179,14 @@ class _CollectionViewState extends State<CollectionView> {
                             ),
                             const Row(
                               children: [
-                                const Text(
+                                Text(
                                   "Box no :0002",
                                   style: TextStyle(
                                       color: Color(0xff5B5B5B),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                const Spacer(),
+                                Spacer(),
                                 Text(
                                   "₹ 210",
                                   style: TextStyle(
