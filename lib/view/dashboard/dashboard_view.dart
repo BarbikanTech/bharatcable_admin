@@ -70,7 +70,7 @@ class _DashboardViewState extends State<DashboardView> {
             children: [
               // Search Bar
               TextField(
-                controller: _searchController,
+                controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search',
                   prefixIcon: const Icon(Icons.search),
