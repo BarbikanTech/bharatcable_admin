@@ -1,4 +1,3 @@
-import 'package:bharatcable_admin/view/Report/report_view.dart';
 import 'package:bharatcable_admin/view/collection/collection_view.dart';
 import 'package:bharatcable_admin/view/dashboard/dashboard_view.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class _LandingViewState extends State<LandingView> {
     const Center(child: Text('Customer')),
     const Center(child: Text('Plans')),
     const CollectionView(),
-    const ReportView(),
+    const Center(child: Text('Reports')),
   ];
 
   void _onItemTapped(int index) {
