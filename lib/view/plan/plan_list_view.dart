@@ -159,70 +159,53 @@ class _PlanListViewState extends State<PlanListView> {
           ),
         ),
       ),
-      body: Expanded(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
         child: ListView.builder(
           itemCount: 4,
-          shrinkWrap: true,
-          primary: false,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(bottom: 8),
               child: Container(
-                margin: const EdgeInsets.only(top: 05),
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                   border: Border.all(color: Colors.grey.shade300),
                 ),
-                child: Row(
-                  children: [
-                    const Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Basic",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Price: 156",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Poppins",
-                              color: Colors.black54,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
+                child: const Row(children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            // Add edit action
-                          },
-                          icon: const Icon(
-                              Icons.drive_file_rename_outline_outlined,
-                              color: Colors.blue),
+                        Text(
+                          "Basic",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black87,
+                          ),
                         ),
-                        IconButton(
-                          onPressed: () {
-                            // Add delete action
-                          },
-                          icon: const Icon(Icons.delete, color: Colors.red),
+                        SizedBox(height: 10),
+                        Text(
+                          "Price: 156",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Poppins",
+                            color: Colors.black54,
+                          ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  Row(children: [
+                    Icon(Icons.edit, color: Colors.blue),
+                    SizedBox(width: 8),
+                    Icon(Icons.delete, color: Colors.red),
+                  ]),
+                ]),
               ),
             );
           },
