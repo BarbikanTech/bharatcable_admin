@@ -12,28 +12,42 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const SizedBox(),
-        leadingWidth: 10,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text("Notification"),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const DashboardView()), // Replace `HomePage` with your actual home page.
-                );
-              },
-              child: const Icon(
-                Icons.arrow_forward,
-                color: Colors.black,
-              ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40), // Adjust the height of AppBar
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // AppBar background color
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
             ),
-          ],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                offset: const Offset(0, 4),
+                blurRadius: 8,
+              ),
+            ],
+          ),
+          child: AppBar(
+            title: const Text(
+              "Notification",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            centerTitle: false,
+            leading: const SizedBox(),
+            leadingWidth: 10,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            actions: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: Column(
@@ -48,7 +62,7 @@ class _NotificationPageState extends State<NotificationPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 8,
+              itemCount: 4,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(
@@ -111,6 +125,31 @@ class _NotificationPageState extends State<NotificationPage> {
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: SizedBox(
+              height: 40,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 3,
+                    width: 400,
+                    decoration: const BoxDecoration(
+                      color: Color(0xff0080E9),
+                    ),
+                  ),
+                  const Text(
+                    "View All Notification",
+                    style: TextStyle(
+                        color: Color(0Xff0080E9),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
