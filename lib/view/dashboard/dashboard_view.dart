@@ -49,8 +49,7 @@ class _DashboardViewState extends State<DashboardView> {
             centerTitle: false,
             leading: const SizedBox(),
             leadingWidth: 10,
-            backgroundColor:
-                Colors.transparent, // Make the AppBar background transparent
+            backgroundColor: Colors.transparent,
             elevation: 0,
             actions: [
               IconButton(
@@ -59,7 +58,7 @@ class _DashboardViewState extends State<DashboardView> {
                 ),
                 onPressed: () {},
               ),
-            ], // Remove default AppBar shadow
+            ],
           ),
         ),
       ),

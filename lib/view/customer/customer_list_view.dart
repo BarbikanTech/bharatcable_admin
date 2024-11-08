@@ -175,7 +175,7 @@ class _CustomerListViewState extends State<CustomerListView> {
                             ],
                           ),
                           Spacer(),
-                          Icon(Icons.edit),
+                          Icon(Icons.drive_file_rename_outline_outlined),
                         ],
                       ),
                     ),
