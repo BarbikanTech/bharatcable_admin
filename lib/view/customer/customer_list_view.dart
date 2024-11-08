@@ -14,40 +14,8 @@ class _CustomerListViewState extends State<CustomerListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("Customer List"),
-      //   actions: [
-      //     GestureDetector(
-      //       onTap: () {
-      //         Navigator.push(
-      //           context,
-      //           MaterialPageRoute(
-      //             builder: (context) => const CustomerCreateView(),
-      //           ),
-      //         );
-      //       },
-      //       child: Container(
-      //         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      //         child: const Row(
-      //           children: [
-      //             Icon(Icons.add),
-      //             SizedBox(width: 4),
-      //             Text(
-      //               "ADD",
-      //               style: TextStyle(
-      //                 fontSize: 16,
-      //                 fontFamily: "Poppins",
-      //                 color: Color(0xff0080E9),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40), // Adjust the height of AppBar
+        preferredSize: const Size.fromHeight(40), // Adjust the height of AppBar
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white, // AppBar background color
@@ -58,43 +26,55 @@ class _CustomerListViewState extends State<CustomerListView> {
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
-                offset: Offset(0, 4),
+                offset: const Offset(0, 4),
                 blurRadius: 8,
               ),
             ],
           ),
           child: AppBar(
-            title: Text("Customer List"),
+            title: const Text(
+              "Customer List",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             centerTitle: false,
-            leading: SizedBox(),
+            leading: const SizedBox(),
             leadingWidth: 10,
             backgroundColor:
                 Colors.transparent, // Make the AppBar background transparent
             elevation: 0,
             actions: [
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: const Row(
-                  children: [
-                    Icon(Icons.add, color: Color(0xff0080E9)),
-                    SizedBox(width: 4),
-                    Text(
-                      "ADD",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: "Poppins",
-                        color: Color(0xff0080E9),
-                      ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CustomerCreateView(),
                     ),
-                  ],
+                  );
+                },
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: const Row(
+                    children: [
+                      Icon(Icons.add, color: Color(0xff0080E9)),
+                      SizedBox(width: 4),
+                      Text(
+                        "ADD",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: "Poppins",
+                          color: Color(0xff0080E9),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
         ),
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -195,7 +175,7 @@ class _CustomerListViewState extends State<CustomerListView> {
                             ],
                           ),
                           Spacer(),
-                          Icon(Icons.edit),
+                          Icon(Icons.drive_file_rename_outline_outlined),
                         ],
                       ),
                     ),
