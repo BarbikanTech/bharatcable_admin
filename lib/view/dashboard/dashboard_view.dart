@@ -1,3 +1,4 @@
+import 'package:bharatcable_admin/view/notification/notification_view.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -56,7 +57,14 @@ class _DashboardViewState extends State<DashboardView> {
                 icon: const Badge(
                   child: Icon(Icons.notifications),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const NotificationPage()), // Replace `HomePage` with your actual home page.
+                  );
+                },
               ),
             ],
           ),
