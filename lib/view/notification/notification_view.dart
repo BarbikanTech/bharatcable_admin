@@ -1,4 +1,3 @@
-import 'package:bharatcable_admin/view/dashboard/dashboard_view.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -13,10 +12,10 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(40), // Adjust the height of AppBar
+        preferredSize: const Size.fromHeight(40),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white, // AppBar background color
+            color: Colors.white,
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
@@ -41,7 +40,7 @@ class _NotificationPageState extends State<NotificationPage> {
             elevation: 0,
             actions: [
               IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -69,7 +68,6 @@ class _NotificationPageState extends State<NotificationPage> {
                       horizontal: 16.0, vertical: 8.0),
                   child: Container(
                     height: 90,
-                    width: 70,
                     padding: const EdgeInsets.all(12.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -85,38 +83,52 @@ class _NotificationPageState extends State<NotificationPage> {
                     child: const Row(
                       children: [
                         CircleAvatar(
-                            radius: 25,
-                            backgroundImage: NetworkImage(
-                                "https://tse1.mm.bing.net/th?id=OIP.8UqOTLl0knNXrmb8iSs8KwHaHw&pid=Api&P=0&h=220")),
+                          radius: 25,
+                          backgroundImage: NetworkImage(
+                              "https://tse1.mm.bing.net/th?id=OIP.8UqOTLl0knNXrmb8iSs8KwHaHw&pid=Api&P=0&h=220"),
+                        ),
                         SizedBox(width: 12),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "VPMM",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Agent 1",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              maxLines: 2,
-                              "A  pass in Post graduate in revalaent subject ",
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: Colors.grey,
+                              SizedBox(height: 4),
+                              Text(
+                                "A pass in Post graduate in relevant subject",
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: Colors.grey,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                            ),
-                            Text(
-                              maxLines: 2,
-                              " with minimum of 55% mark and pass.",
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: Colors.grey,
+                              Text(
+                                "with minimum of 55% mark and pass.",
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: Colors.grey,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          "10:30 AM",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
                         ),
                       ],
                     ),
@@ -140,16 +152,16 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                   ),
                   const Text(
-                    "View All Notification",
+                    "View All Notifications",
                     style: TextStyle(
                         color: Color(0Xff0080E9),
                         fontSize: 14,
                         fontWeight: FontWeight.w500),
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
