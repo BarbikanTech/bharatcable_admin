@@ -1,5 +1,6 @@
 import 'package:bharatcable_admin/view/customer/customer_view.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 import 'customer_create_view.dart';
 
@@ -92,7 +93,7 @@ class _CustomerListViewState extends State<CustomerListView> {
                       hintText: "Search",
                       filled: true,
                       fillColor: Colors.white70,
-                      prefixIcon: const Icon(Icons.search),
+                      prefixIcon: const Icon(Iconsax.search_normal),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.grey.shade300,
@@ -116,11 +117,17 @@ class _CustomerListViewState extends State<CustomerListView> {
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: const Color(0xff78C2FF),
+                    ),
                   ),
                   child: IconButton(
-                    icon: const Icon(Icons.filter_list, color: Colors.white),
+                    icon: const Icon(
+                      Icons.filter_list,
+                      color: Color(0xff1190F9),
+                    ),
                     onPressed: () {
                       // Implement filter functionality
                     },

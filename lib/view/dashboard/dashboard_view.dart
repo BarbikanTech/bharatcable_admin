@@ -1,5 +1,7 @@
+import 'package:bharatcable_admin/view/notification/notification_view.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:iconsax/iconsax.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
@@ -56,7 +58,13 @@ class _DashboardViewState extends State<DashboardView> {
                 icon: const Badge(
                   child: Icon(Icons.notifications),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationPage()),
+                  );
+                },
               ),
             ],
           ),
@@ -72,7 +80,7 @@ class _DashboardViewState extends State<DashboardView> {
                 controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search',
-                  prefixIcon: const Icon(Icons.search),
+                  prefixIcon: const Icon(Iconsax.search_normal),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
