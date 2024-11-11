@@ -188,20 +188,30 @@ class _PlanListViewState extends State<PlanListView> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Text(
-                          "Price: 156",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "Poppins",
-                            color: Colors.black54,
-                          ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.currency_rupee,
+                              color: Color(0xff000000),
+                              size: 14,
+                            ),
+                            Text(
+                              "156",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Poppins",
+                                color: Color(0xff000000),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
                   Row(children: [
-                    Icon(Icons.edit, color: Colors.blue),
+                    Icon(Icons.drive_file_rename_outline,
+                        color: Color(0xff000000)),
                     SizedBox(width: 8),
                     Icon(Icons.delete, color: Colors.red),
                   ]),

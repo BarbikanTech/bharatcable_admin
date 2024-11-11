@@ -1,17 +1,19 @@
-// import 'package:bharatcable_admin/view/Report/report_view.dart';
-// import 'package:bharatcable_admin/view/collection/collection_view.dart';
-// import 'package:bharatcable_admin/view/dashboard/dashboard_view.dart';
-// import 'package:flutter/material.dart';
+import 'package:bharatcable_admin/view/Report/report_view.dart';
+import 'package:bharatcable_admin/view/collection/collection_view.dart';
+import 'package:bharatcable_admin/view/dashboard/dashboard_view.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-// import 'customer/customer_list_view.dart';
-// import 'plan/plan_list_view.dart';
+import '../themeprovider_view.dart';
+import 'customer/customer_list_view.dart';
+import 'plan/plan_list_view.dart';
 
-// class LandingView extends StatefulWidget {
-//   const LandingView({super.key});
+class LandingView extends StatefulWidget {
+  const LandingView({super.key});
 
-//   @override
-//   State<LandingView> createState() => _LandingViewState();
-// }
+  @override
+  State<LandingView> createState() => _LandingViewState();
+}
 
 // class _LandingViewState extends State<LandingView> {
 //   int _selectedIndex = 0;
@@ -32,6 +34,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
+//      final themeProvider = Provider.of<ThemeProvider>(context);
 //     return Scaffold(
 //       body: AnimatedSwitcher(
 //         duration: const Duration(milliseconds: 700),
@@ -44,25 +47,25 @@
 //         selectedItemColor: const Color(0xFF0080E9),
 //         selectedLabelStyle: const TextStyle(fontSize: 14),
 //         unselectedLabelStyle: const TextStyle(fontSize: 0),
-//         items: [
+//         items: const [
 //           BottomNavigationBarItem(
-//             icon: Image.asset("assets/firsticon.png"),
+//             icon: Icon(Icons.dashboard_outlined),
 //             label: 'Dashboard',
 //           ),
 //           BottomNavigationBarItem(
-//             icon: Image.asset("assets/second.png"),
+//             icon: Icon(Icons.group_outlined),
 //             label: 'Customer',
 //           ),
 //           BottomNavigationBarItem(
-//             icon: Image.asset("assets/third.png"),
+//             icon: Icon(Icons.next_plan_outlined),
 //             label: 'Plans',
 //           ),
 //           BottomNavigationBarItem(
-//             icon: Image.asset("assets/fourth.png"),
+//             icon: Icon(Icons.collections_bookmark_outlined),
 //             label: 'Collections',
 //           ),
 //           BottomNavigationBarItem(
-//             icon: Image.asset("assets/fifth.png"),
+//             icon: Icon(Icons.report_outlined),
 //             label: 'Reports',
 //           ),
 //         ],
@@ -70,20 +73,6 @@
 //     );
 //   }
 // }
-import 'package:bharatcable_admin/view/Report/report_view.dart';
-import 'package:bharatcable_admin/view/collection/collection_view.dart';
-import 'package:bharatcable_admin/view/dashboard/dashboard_view.dart';
-import 'package:flutter/material.dart';
-
-import 'customer/customer_list_view.dart';
-import 'plan/plan_list_view.dart';
-
-class LandingView extends StatefulWidget {
-  const LandingView({super.key});
-
-  @override
-  State<LandingView> createState() => _LandingViewState();
-}
 
 class _LandingViewState extends State<LandingView> {
   int _selectedIndex = 0;
@@ -104,6 +93,7 @@ class _LandingViewState extends State<LandingView> {
 
   @override
   Widget build(BuildContext context) {
+    // We use Consumer to listen to theme changes inside LandingView
     return Scaffold(
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 700),
@@ -122,11 +112,11 @@ class _LandingViewState extends State<LandingView> {
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.group),
+            icon: Icon(Icons.group_outlined),
             label: 'Customer',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.next_plan),
+            icon: Icon(Icons.next_plan_outlined),
             label: 'Plans',
           ),
           BottomNavigationBarItem(
@@ -134,7 +124,7 @@ class _LandingViewState extends State<LandingView> {
             label: 'Collections',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.report_sharp),
+            icon: Icon(Icons.report_outlined),
             label: 'Reports',
           ),
         ],

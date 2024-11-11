@@ -1,4 +1,4 @@
-import 'package:bharatcable_admin/view/notification/notification_view.dart';
+import 'package:bharatcable_admin/view/drawer/customdrawer_view.dart';
 import 'package:bharatcable_admin/view/notification/notification_view.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -13,7 +13,7 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   TextEditingController searchController = TextEditingController();
-  String selectedPeriod = 'Monthly';
+
   String selectedStatus = 'Unpaid';
   int? _selectedRadio = 1;
 
@@ -26,10 +26,16 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: CustomDrawer(
+          onThemeChange: (String theme) {},
+        ),
+      ),
       backgroundColor: const Color(0xffFFFFFF),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40), // Adjust the height of AppBar
         child: Container(
+          padding: const EdgeInsets.only(left: 5),
           decoration: BoxDecoration(
             color: Colors.white, // AppBar background color
             borderRadius: const BorderRadius.only(
@@ -50,14 +56,13 @@ class _DashboardViewState extends State<DashboardView> {
               height: 30, // Adjust size as needed
             ),
             centerTitle: false,
-            leading: const SizedBox(),
-            leadingWidth: 10,
+            leadingWidth: 30,
             backgroundColor: Colors.transparent,
             elevation: 0,
             actions: [
               IconButton(
                 icon: const Badge(
-                  child: Icon(Icons.notifications),
+                  child: Icon(Icons.notifications_outlined),
                 ),
                 onPressed: () {
                   Navigator.pushReplacement(
@@ -209,7 +214,6 @@ class _DashboardViewState extends State<DashboardView> {
                               ),
                             ),
                           ),
-                          // Wrap the Column in an Expanded widget to avoid overflow errors
                           Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -223,7 +227,7 @@ class _DashboardViewState extends State<DashboardView> {
                                       groupValue: _selectedRadio,
                                       onChanged: _handleRadioValueChange,
                                     ),
-                                    const Text('UnPaid'),
+                                    const Text('Unpaid'),
                                   ],
                                 ),
                                 Row(
@@ -292,6 +296,32 @@ class _DashboardViewState extends State<DashboardView> {
                     SizedBox(width: 100),
                     Text(
                       " ₹6,455",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 70,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: const Color(0xffD5ECFF),
+                ),
+                child: const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Image(image: AssetImage("assets/overdue.png")),
+                    ),
+                    SizedBox(width: 5),
+                    Text("  Overdue Amount"),
+                    SizedBox(width: 110),
+                    Text(
+                      " ₹1,605",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
