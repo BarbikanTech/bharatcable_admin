@@ -4,6 +4,7 @@ futureLoading(context) {
   showDialog(
     context: context,
     barrierDismissible: false,
+    // ignore: deprecated_member_use
     builder: (context) => WillPopScope(
       onWillPop: () async => false,
       child: Center(

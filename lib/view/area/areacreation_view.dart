@@ -1,5 +1,8 @@
 import 'package:bharatcable_admin/view/landing_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../themeprovider_view.dart';
 
 class AreacreationView extends StatefulWidget {
   const AreacreationView({super.key});
@@ -11,14 +14,21 @@ class AreacreationView extends StatefulWidget {
 class _AreacreationViewState extends State<AreacreationView> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : const Color(0xff545454),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: themeProvider.themeMode == ThemeMode.light
+            ? const Color(0xffFFFFFF)
+            : const Color(0xff2B2B2B),
         title: const Text("Create Area"),
       ),
       bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
+          color: themeProvider.themeMode == ThemeMode.light
+              ? const Color(0xffFFFFFF)
+              : const Color(0xff2B2B2B),
           shadowColor: Colors.black,
           child: Center(
             child: SizedBox(
@@ -68,15 +78,17 @@ class _AreacreationViewState extends State<AreacreationView> {
       required String hintText,
       TextInputType keyboardType = TextInputType.text,
       bool isDropdown = false}) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: Theme.of(context)
-              .textTheme
-              .labelLarge!
-              .copyWith(color: Colors.black54),
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                color: themeProvider.themeMode == ThemeMode.light
+                    ? Colors.black
+                    : const Color(0xffFFFFFF),
+              ),
         ),
         const SizedBox(height: 8),
         TextFormField(
@@ -84,7 +96,9 @@ class _AreacreationViewState extends State<AreacreationView> {
           decoration: InputDecoration(
             hintText: hintText,
             filled: true,
-            fillColor: Colors.grey.shade200,
+            fillColor: themeProvider.themeMode == ThemeMode.light
+                ? Colors.grey.shade100
+                : const Color(0xff434343),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade300),
               borderRadius: BorderRadius.circular(10),

@@ -1,5 +1,8 @@
 import 'package:bharatcable_admin/view/landing_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../themeprovider_view.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -11,12 +14,18 @@ class NotificationPage extends StatefulWidget {
 class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : const Color(0xff545454),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: themeProvider.themeMode == ThemeMode.light
+                ? const Color(0xffFFFFFF)
+                : const Color(0xff2B2B2B),
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
@@ -75,7 +84,9 @@ class _NotificationPageState extends State<NotificationPage> {
                     height: 90,
                     padding: const EdgeInsets.all(12.0),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xffFFFFFF)
+                          : const Color(0xff434343),
                       borderRadius: BorderRadius.circular(8),
                       boxShadow: [
                         BoxShadow(

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:provider/provider.dart';
+
+import '../../themeprovider_view.dart';
 
 class ReportView extends StatefulWidget {
   const ReportView({super.key});
@@ -19,35 +22,44 @@ class _ReportViewState extends State<ReportView> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: const Color(0xffFFFFFF),
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : const Color(0xff545454),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40), // Adjust the height of AppBar
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white, // AppBar background color
+            color: themeProvider.themeMode == ThemeMode.light
+                ? const Color(0xffFFFFFF)
+                : const Color(
+                    0xff2B2B2B), // AppBar background color// AppBar // AppBar background color
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                offset: const Offset(0, 4),
+                color: Colors.white.withOpacity(0.1),
+                offset: const Offset(0, 10),
                 blurRadius: 8,
               ),
             ],
           ),
           child: AppBar(
+            backgroundColor: themeProvider.themeMode == ThemeMode.light
+                ? const Color(0xffFFFFFF)
+                : const Color(0xff545454),
             title: const Text(
               "Reports",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             centerTitle: false,
+
             leading: const SizedBox(),
             leadingWidth: 10,
-            backgroundColor:
-                Colors.transparent, // Make the AppBar background transparent
+            // Make the AppBar background transparent
             elevation: 0,
           ),
         ),
@@ -73,7 +85,7 @@ class _ReportViewState extends State<ReportView> {
                       PieChartData(
                         sectionsSpace: 4,
                         centerSpaceRadius: 0,
-                        sections: _buildPieChartSections(),
+                        sections: _buildPieChartSections(themeProvider),
                       ),
                     ),
                   ),
@@ -92,7 +104,7 @@ class _ReportViewState extends State<ReportView> {
                             groupValue: _selectedRadio,
                             onChanged: _handleRadioValueChange,
                           ),
-                          const Text('UnPaid'),
+                          const Text('Unpaid'),
                         ],
                       ),
                       Row(
@@ -100,6 +112,17 @@ class _ReportViewState extends State<ReportView> {
                           Radio<int>(
                             activeColor: const Color(0xff0080E9),
                             value: 2,
+                            groupValue: _selectedRadio,
+                            onChanged: _handleRadioValueChange,
+                          ),
+                          const Text('Paid'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio<int>(
+                            activeColor: const Color(0xff0080E9),
+                            value: 3,
                             groupValue: _selectedRadio,
                             onChanged: _handleRadioValueChange,
                           ),
@@ -202,18 +225,24 @@ class _ReportViewState extends State<ReportView> {
                     margin: const EdgeInsets.only(top: 10),
                     padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
                     decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xff0080E9),
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
+                      border: Border.all(
+                        color: themeProvider.themeMode == ThemeMode.light
+                            ? const Color(0xff0080E9)
+                            : Colors.white, // AppBar background color
+                      ),
+                    ),
                     child: Column(
                       children: [
                         Row(
                           children: [
-                            const Text(
+                            Text(
                               "Surya",
                               style: TextStyle(
-                                  color: Color(0xff000000), fontSize: 16),
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
+                                  fontSize: 16),
                             ),
                             const Spacer(),
                             SizedBox(
@@ -221,17 +250,20 @@ class _ReportViewState extends State<ReportView> {
                                 child: Image.asset("assets/google-pay.png"))
                           ],
                         ),
-                        const Row(
+                        Row(
                           children: [
                             Text(
                               "Box no :0002",
                               style: TextStyle(
-                                  color: Color(0xff5B5B5B),
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400),
                             ),
-                            Spacer(),
-                            Text(
+                            const Spacer(),
+                            const Text(
                               "₹ 210",
                               style: TextStyle(
                                   color: Color(0xff0080E9),
@@ -252,24 +284,47 @@ class _ReportViewState extends State<ReportView> {
     );
   }
 
-  List<PieChartSectionData> _buildPieChartSections() {
+  List<PieChartSectionData> _buildPieChartSections(
+      ThemeProvider themeProvider) {
+    // Determine colors based on the theme mode
+    final backgroundColor = themeProvider.themeMode == ThemeMode.light
+        ? const Color(0xffFFFFFF) // Light mode background color
+        : const Color(0xff2B2B2B); // Dark mode background color
+
+    final titleColor = themeProvider.themeMode == ThemeMode.light
+        ? const Color(0xff0080E9) // Light mode title color
+        : Colors.white; // Dark mode title color
+
     return [
       PieChartSectionData(
-          color: const Color(0xffFFFFFF),
-          value: 78,
-          title: '78%',
-          radius: 70,
-          titleStyle: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff0080E9),
-          ),
-          titlePositionPercentageOffset: 0.4,
-          borderSide: const BorderSide(color: Color(0xff0080E9))),
+        color: backgroundColor,
+        value: 70,
+        title: '70%',
+        radius: 70,
+        titleStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: titleColor,
+        ),
+        titlePositionPercentageOffset: 0.4,
+        borderSide: BorderSide(color: titleColor),
+      ),
       PieChartSectionData(
         color: const Color(0xff0080E9),
-        value: 22,
-        title: '22%',
+        value: 15,
+        title: '15%',
+        radius: 70,
+        titleStyle: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        titlePositionPercentageOffset: 0.6,
+      ),
+      PieChartSectionData(
+        color: const Color(0xff0080E9),
+        value: 15,
+        title: '15%',
         radius: 70,
         titleStyle: const TextStyle(
           fontSize: 18,

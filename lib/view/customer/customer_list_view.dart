@@ -1,7 +1,9 @@
 import 'package:bharatcable_admin/view/customer/customer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 
+import '../../themeprovider_view.dart';
 import 'customer_create_view.dart';
 
 class CustomerListView extends StatefulWidget {
@@ -14,9 +16,14 @@ class CustomerListView extends StatefulWidget {
 class _CustomerListViewState extends State<CustomerListView> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : const Color(0xff545454),
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(40), // Adjust the height of AppBar
+        preferredSize: const Size.fromHeight(40),
+        // Adjust the height of AppBar
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white, // AppBar background color
@@ -33,15 +40,20 @@ class _CustomerListViewState extends State<CustomerListView> {
             ],
           ),
           child: AppBar(
+            backgroundColor: themeProvider.themeMode == ThemeMode.light
+                ? const Color(0xffFFFFFF)
+                : const Color(0xff2B2B2B),
             title: const Text(
               "Customer List",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             centerTitle: false,
             leading: const SizedBox(),
             leadingWidth: 10,
-            backgroundColor:
-                Colors.transparent, // Make the AppBar background transparent
+            // Make the AppBar background transparent
             elevation: 0,
             actions: [
               GestureDetector(
@@ -54,6 +66,9 @@ class _CustomerListViewState extends State<CustomerListView> {
                   );
                 },
                 child: Container(
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? const Color(0xffFFFFFF)
+                      : const Color(0xff2B2B2B), // AppBar background color
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: const Row(
@@ -92,7 +107,9 @@ class _CustomerListViewState extends State<CustomerListView> {
                     decoration: InputDecoration(
                       hintText: "Search",
                       filled: true,
-                      fillColor: Colors.white70,
+                      fillColor: themeProvider.themeMode == ThemeMode.light
+                          ? Colors.grey.shade100
+                          : const Color(0xff434343),
                       prefixIcon: const Icon(Iconsax.search_normal),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -117,16 +134,21 @@ class _CustomerListViewState extends State<CustomerListView> {
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: themeProvider.themeMode == ThemeMode.light
+                        ? const Color(0xffFFFFFF)
+                        : Colors.black,
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                      color: const Color(0xff78C2FF),
-                    ),
+                        color: themeProvider.themeMode == ThemeMode.light
+                            ? Colors.black
+                            : const Color(0xffFFFFFF)),
                   ),
                   child: IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.filter_list,
-                      color: Color(0xff1190F9),
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? Colors.black
+                          : Colors.white,
                     ),
                     onPressed: () {
                       // Implement filter functionality
@@ -155,9 +177,12 @@ class _CustomerListViewState extends State<CustomerListView> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey.shade300),
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
+                        color: themeProvider.themeMode == ThemeMode.light
+                            ? const Color(0xffFFFFFF)
+                            : const Color(
+                                0xff545454), // AppBar background color
                       ),
-                      child: const Row(
+                      child: Row(
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,22 +192,28 @@ class _CustomerListViewState extends State<CustomerListView> {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: "Poppins",
-                                  color: Colors.black87,
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
                                 ),
                               ),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text(
                                 "Box No: 001, 002",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: "Poppins",
-                                  color: Colors.black54,
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
                                 ),
                               ),
                             ],
                           ),
-                          Spacer(),
-                          Icon(Icons.drive_file_rename_outline_outlined),
+                          const Spacer(),
+                          const Icon(Icons.drive_file_rename_outline_outlined),
                         ],
                       ),
                     ),

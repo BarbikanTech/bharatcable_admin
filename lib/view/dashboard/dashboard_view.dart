@@ -3,6 +3,9 @@ import 'package:bharatcable_admin/view/notification/notification_view.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
+
+import '../../themeprovider_view.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
@@ -25,19 +28,24 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       drawer: Drawer(
         child: CustomDrawer(
           onThemeChange: (String theme) {},
         ),
       ),
-      backgroundColor: const Color(0xffFFFFFF),
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : const Color(0xff545454),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40), // Adjust the height of AppBar
         child: Container(
           padding: const EdgeInsets.only(left: 5),
           decoration: BoxDecoration(
-            color: Colors.white, // AppBar background color
+            color: themeProvider.themeMode == ThemeMode.light
+                ? const Color(0xffFFFFFF)
+                : const Color(0xff2B2B2B), // AppBar background color
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
@@ -85,8 +93,21 @@ class _DashboardViewState extends State<DashboardView> {
               TextField(
                 controller: searchController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: themeProvider.themeMode == ThemeMode.light
+                      ? Colors.grey.shade100
+                      : const Color(0xff434343),
                   hintText: 'Search',
-                  prefixIcon: const Icon(Iconsax.search_normal),
+                  hintStyle: TextStyle(
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? Colors.black
+                          : Colors.white),
+                  prefixIcon: Icon(
+                    Iconsax.search_normal,
+                    color: themeProvider.themeMode == ThemeMode.light
+                        ? Colors.black
+                        : Colors.white,
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
@@ -100,29 +121,40 @@ class _DashboardViewState extends State<DashboardView> {
                     padding: const EdgeInsets.all(16.0),
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color(0xffD5ECFF),
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xffD5ECFF)
+                          : const Color(0xff434343),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    child: const Column(
+                    child: Column(
                       children: [
                         Row(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                                 height: 20,
                                 child: Image(
                                     image: AssetImage("assets/profile.png"))),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Text(
                               'Total Customers',
                               style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w600),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white),
                             ),
                           ],
                         ),
                         Text(
                           '1036',
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: themeProvider.themeMode == ThemeMode.light
+                                  ? Colors.black
+                                  : Colors.white),
                         ),
                       ],
                     ),
@@ -132,30 +164,42 @@ class _DashboardViewState extends State<DashboardView> {
                     padding: const EdgeInsets.all(16.0),
                     height: 80,
                     decoration: BoxDecoration(
-                      color: const Color(0xffD5ECFF),
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xffD5ECFF)
+                          : const Color(0xff434343),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    child: const Column(
+                    child: Column(
                       children: [
                         Row(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                                 height: 20,
                                 child: Image(
                                   image: AssetImage("assets/rectangle.png"),
                                 )),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Text(
                               'Total Areas',
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w600),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  // ignore: unrelated_type_equality_checks
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white),
                             ),
                           ],
                         ),
                         Text(
                           '78',
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: themeProvider.themeMode == ThemeMode.light
+                                  ? Colors.black
+                                  : Colors.white),
                         ),
                       ],
                     ),
@@ -170,26 +214,51 @@ class _DashboardViewState extends State<DashboardView> {
                 height: 300,
                 width: 390,
                 decoration: BoxDecoration(
-                    color: const Color(0xffF2F2F2),
+                    color: themeProvider.themeMode == ThemeMode.light
+                        ? const Color(0xffD5ECFF)
+                        : const Color(0xff434343),
                     borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   children: [
                     Row(
                       children: [
-                        const Text("Collection Amount"),
+                        Text(
+                          "Collection Amount",
+                          style: TextStyle(
+                              color: themeProvider.themeMode == ThemeMode.light
+                                  ? Colors.black
+                                  : Colors.white),
+                        ),
                         const Spacer(),
                         Container(
                           padding: const EdgeInsets.only(
                               left: 10, right: 05, top: 05, bottom: 05),
                           height: 30,
                           width: 101,
-                          decoration:
-                              const BoxDecoration(color: Color(0xffFFFFFF)),
-                          child: const Row(
+                          decoration: BoxDecoration(
+                            color: themeProvider.themeMode == ThemeMode.light
+                                ? const Color(0xffFFFFFF)
+                                : const Color(
+                                    0xff2B2B2B), // AppBar background color
+                          ),
+                          child: Row(
                             children: [
-                              Text("Monthly"),
-                              Spacer(),
-                              Icon(Icons.keyboard_arrow_down),
+                              Text(
+                                "Monthly",
+                                style: TextStyle(
+                                    color: themeProvider.themeMode ==
+                                            ThemeMode.light
+                                        ? Colors.black
+                                        : Colors.white),
+                              ),
+                              const Spacer(),
+                              Icon(
+                                Icons.keyboard_arrow_down,
+                                color:
+                                    themeProvider.themeMode == ThemeMode.light
+                                        ? Colors.black
+                                        : Colors.white,
+                              ),
                             ],
                           ),
                         ),
@@ -209,7 +278,8 @@ class _DashboardViewState extends State<DashboardView> {
                                 PieChartData(
                                   sectionsSpace: 4,
                                   centerSpaceRadius: 0,
-                                  sections: _buildPieChartSections(),
+                                  sections:
+                                      _buildPieChartSections(themeProvider),
                                 ),
                               ),
                             ),
@@ -227,7 +297,14 @@ class _DashboardViewState extends State<DashboardView> {
                                       groupValue: _selectedRadio,
                                       onChanged: _handleRadioValueChange,
                                     ),
-                                    const Text('Unpaid'),
+                                    Text(
+                                      'Unpaid',
+                                      style: TextStyle(
+                                          color: themeProvider.themeMode ==
+                                                  ThemeMode.light
+                                              ? Colors.black
+                                              : Colors.white),
+                                    ),
                                   ],
                                 ),
                                 Row(
@@ -238,7 +315,32 @@ class _DashboardViewState extends State<DashboardView> {
                                       groupValue: _selectedRadio,
                                       onChanged: _handleRadioValueChange,
                                     ),
-                                    const Text('Paid'),
+                                    Text(
+                                      'Paid',
+                                      style: TextStyle(
+                                          color: themeProvider.themeMode ==
+                                                  ThemeMode.light
+                                              ? Colors.black
+                                              : Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Radio<int>(
+                                      activeColor: const Color(0xff0080E9),
+                                      value: 3,
+                                      groupValue: _selectedRadio,
+                                      onChanged: _handleRadioValueChange,
+                                    ),
+                                    Text(
+                                      'Overdue',
+                                      style: TextStyle(
+                                          color: themeProvider.themeMode ==
+                                                  ThemeMode.light
+                                              ? Colors.black
+                                              : Colors.white),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -257,18 +359,26 @@ class _DashboardViewState extends State<DashboardView> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color(0xffD5ECFF),
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? const Color(0xffD5ECFF)
+                      : const Color(0xff434343),
                 ),
-                child: const Row(
+                child: Row(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Image(image: AssetImage("assets/money.png")),
                     ),
-                    SizedBox(width: 5),
-                    Text("Pending Amount"),
-                    SizedBox(width: 110),
+                    const SizedBox(width: 5),
                     Text(
+                      "Pending Amount",
+                      style: TextStyle(
+                          color: themeProvider.themeMode == ThemeMode.light
+                              ? Colors.black
+                              : Colors.white),
+                    ),
+                    const SizedBox(width: 110),
+                    const Text(
                       " ₹6,455",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
@@ -283,7 +393,9 @@ class _DashboardViewState extends State<DashboardView> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color(0xffD5ECFF),
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? const Color(0xffD5ECFF)
+                      : const Color(0xff434343),
                 ),
                 child: const Row(
                   children: [
@@ -309,7 +421,9 @@ class _DashboardViewState extends State<DashboardView> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color(0xffD5ECFF),
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? const Color(0xffD5ECFF)
+                      : const Color(0xff434343),
                 ),
                 child: const Row(
                   children: [
@@ -334,37 +448,73 @@ class _DashboardViewState extends State<DashboardView> {
     );
   }
 
-  List<PieChartSectionData> _buildPieChartSections() {
+  List<PieChartSectionData> _buildPieChartSections(
+      ThemeProvider themeProvider) {
+    final backgroundColor = themeProvider.themeMode == ThemeMode.light
+        ? const Color(0xffFFFFFF) // Light mode background color
+        : const Color(0xff2B2B2B); // Dark mode background color
+
+    final titleColor = themeProvider.themeMode == ThemeMode.light
+        ? const Color(0xff0080E9) // Light mode title color
+        : const Color(0xff0080E9); // Dark mode title color
+
+    final borderColor = themeProvider.themeMode == ThemeMode.light
+        ? const Color(0xff0080E9) // Light mode border color
+        : const Color(0xff006fca); // Dark mode border color
+
     return [
       PieChartSectionData(
-          color: const Color(0xffFFFFFF),
-          value: 78,
-          title: '78%',
-          radius: 70,
-          titleStyle: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff0080E9),
-          ),
-          titlePositionPercentageOffset: 0.4,
-          borderSide: const BorderSide(color: Color(0xff0080E9))),
+        color: backgroundColor,
+        value: 50,
+        title: '70%',
+        radius: 70,
+        titleStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: titleColor,
+        ),
+        titlePositionPercentageOffset: 0.4,
+        borderSide: BorderSide(color: borderColor),
+      ),
       PieChartSectionData(
-        color: const Color(0xff0080E9),
-        value: 22,
-        title: '22%',
+        color: titleColor,
+        value: 15,
+        title: '15%',
         radius: 70,
         titleStyle: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: Colors.black,
+        ),
+        titlePositionPercentageOffset: 0.6,
+      ),
+      PieChartSectionData(
+        color: titleColor,
+        value: 15,
+        title: '15%',
+        radius: 70,
+        titleStyle: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
         ),
         titlePositionPercentageOffset: 0.6,
       ),
     ];
   }
 
-  Widget buildRadioIndicator(
-      {required Color color, required String text, required String value}) {
+  Widget buildRadioIndicator({
+    required Color color,
+    required String text,
+    required String value,
+    required ThemeProvider themeProvider,
+  }) {
+    final activeTextColor = themeProvider.themeMode == ThemeMode.light
+        ? Colors.blue
+        : Colors.cyanAccent;
+    final inactiveTextColor =
+        themeProvider.themeMode == ThemeMode.light ? Colors.black : Colors.grey;
+
     return Row(
       children: [
         Radio<String>(
@@ -375,15 +525,17 @@ class _DashboardViewState extends State<DashboardView> {
               selectedStatus = newValue!;
             });
           },
-          activeColor: Colors.blue,
+          activeColor: activeTextColor,
         ),
         const SizedBox(width: 8),
         Text(
           text,
           style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: value == selectedStatus ? Colors.blue : Colors.black),
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color:
+                value == selectedStatus ? activeTextColor : inactiveTextColor,
+          ),
         ),
       ],
     );

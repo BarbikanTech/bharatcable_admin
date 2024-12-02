@@ -2,6 +2,9 @@ import 'package:bharatcable_admin/view/agent/agentcreation_view.dart';
 import 'package:bharatcable_admin/view/landing_view.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
+
+import '../../themeprovider_view.dart';
 
 class AgentlistView extends StatefulWidget {
   const AgentlistView({super.key});
@@ -13,13 +16,18 @@ class AgentlistView extends StatefulWidget {
 class _AgentListViewState extends State<AgentlistView> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : Colors.black,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white, // AppBar background color
+            color: themeProvider.themeMode == ThemeMode.light
+                ? const Color(0xffFFFFFF)
+                : Colors.black,
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
@@ -33,13 +41,24 @@ class _AgentListViewState extends State<AgentlistView> {
             ],
           ),
           child: AppBar(
-            title: const Text(
+            title: Text(
               "Agent List",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: themeProvider.themeMode == ThemeMode.light
+                    ? Colors.black
+                    : Colors.white,
+              ),
             ),
             centerTitle: false,
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              icon: Icon(
+                Icons.arrow_back,
+                color: themeProvider.themeMode == ThemeMode.light
+                    ? Colors.black
+                    : Colors.white,
+              ),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -100,7 +119,9 @@ class _AgentListViewState extends State<AgentlistView> {
                     decoration: InputDecoration(
                       hintText: "Search",
                       filled: true,
-                      fillColor: Colors.white70,
+                      fillColor: themeProvider.themeMode == ThemeMode.light
+                          ? Colors.grey.shade100
+                          : const Color(0xff434343),
                       prefixIcon: const Icon(Iconsax.search_normal),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -125,16 +146,22 @@ class _AgentListViewState extends State<AgentlistView> {
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: themeProvider.themeMode == ThemeMode.light
+                        ? const Color(0xffFFFFFF)
+                        : const Color(0xff2B2B2B),
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                      color: const Color(0xff78C2FF),
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xff1190F9)
+                          : const Color(0xff2B2B2B),
                     ),
                   ),
                   child: IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.filter_list,
-                      color: Color(0xff1190F9),
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xff1190F9)
+                          : const Color(0xff1190F9),
                     ),
                     onPressed: () {
                       // Implement filter functionality
@@ -163,9 +190,12 @@ class _AgentListViewState extends State<AgentlistView> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey.shade300),
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
+                        color: themeProvider.themeMode == ThemeMode.light
+                            ? const Color(0xffFFFFFF)
+                            : const Color(
+                                0xff2B2B2B), // AppBar background color
                       ),
-                      child: const Row(
+                      child: Row(
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -175,26 +205,36 @@ class _AgentListViewState extends State<AgentlistView> {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: "Poppins",
-                                  color: Colors.black87,
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
                                 ),
                               ),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text(
                                 "Pandiyan Nagar",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: "Poppins",
-                                  color: Colors.black54,
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
                                 ),
                               ),
                             ],
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Row(children: [
-                            Icon(Icons.drive_file_rename_outline_outlined,
-                                color: Color(0xff000000)),
-                            SizedBox(width: 8),
-                            Icon(Icons.delete, color: Colors.red),
+                            Icon(
+                              Icons.drive_file_rename_outline_outlined,
+                              color: themeProvider.themeMode == ThemeMode.light
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                            const SizedBox(width: 8),
+                            const Icon(Icons.delete, color: Colors.red),
                           ]),
                         ],
                       ),

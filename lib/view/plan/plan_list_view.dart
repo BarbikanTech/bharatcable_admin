@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../themeprovider_view.dart';
 
 class PlanListView extends StatefulWidget {
   const PlanListView({super.key});
@@ -10,13 +13,18 @@ class PlanListView extends StatefulWidget {
 class _PlanListViewState extends State<PlanListView> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: const Color(0xffFFFFFF),
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : const Color(0xff545454),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xffFFFFFF),
+            color: themeProvider.themeMode == ThemeMode.light
+                ? const Color(0xff2B2B2B)
+                : Colors.white, // AppBar background col
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(40),
               bottomRight: Radius.circular(40),
@@ -30,12 +38,14 @@ class _PlanListViewState extends State<PlanListView> {
             ],
           ),
           child: AppBar(
-            title: const Text(
+            title: Text(
               "Plan List",
               style: TextStyle(
                 fontSize: 16,
                 fontFamily: "Poppins",
-                color: Colors.black,
+                color: themeProvider.themeMode == ThemeMode.light
+                    ? const Color(0xff2B2B2B)
+                    : Colors.white, // AppBar background color
               ),
             ),
             leading: const SizedBox(),
@@ -47,11 +57,14 @@ class _PlanListViewState extends State<PlanListView> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: const Text(
+                        title: Text(
                           "Add Plan",
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "Poppins",
+                            color: themeProvider.themeMode == ThemeMode.light
+                                ? const Color(0xff2B2B2B)
+                                : Colors.black, // AppBar background color
                           ),
                         ),
                         content: Container(
@@ -59,12 +72,16 @@ class _PlanListViewState extends State<PlanListView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
+                              Text(
                                 "Name",
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w500,
+                                  color: themeProvider.themeMode ==
+                                          ThemeMode.light
+                                      ? const Color(0xff2B2B2B)
+                                      : Colors.white, // AppBar background color
                                 ),
                               ),
                               const SizedBox(height: 5),
@@ -72,12 +89,28 @@ class _PlanListViewState extends State<PlanListView> {
                                 decoration: InputDecoration(
                                   hintText: "Basic",
                                   filled: true,
-                                  fillColor: Colors.grey.shade200,
+                                  fillColor:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.grey.shade100
+                                          : Colors.black,
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                      color: Color(0xffF5F5F5),
+                                    borderSide: BorderSide(
+                                      color: themeProvider.themeMode ==
+                                              ThemeMode.light
+                                          ? const Color(0xff2B2B2B)
+                                          : Colors
+                                              .white, // AppBar background color
                                     ),
                                     borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: themeProvider.themeMode ==
+                                              ThemeMode.light
+                                          ? const Color(0xff2B2B2B)
+                                          : Colors
+                                              .white, // AppBar background color
+                                    ),
                                   ),
                                 ),
                               ),
@@ -95,10 +128,25 @@ class _PlanListViewState extends State<PlanListView> {
                                 decoration: InputDecoration(
                                   hintText: "156",
                                   filled: true,
-                                  fillColor: Colors.grey.shade200,
+                                  fillColor:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.grey.shade100
+                                          : Colors.black,
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                      color: Color(0xffF5F5F5),
+                                    borderSide: BorderSide(
+                                      color: themeProvider.themeMode ==
+                                              ThemeMode.light
+                                          ? const Color(0xff2B2B2B)
+                                          : Colors.white,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: themeProvider.themeMode ==
+                                              ThemeMode.light
+                                          ? const Color(0xff2B2B2B)
+                                          : Colors.white,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -170,10 +218,12 @@ class _PlanListViewState extends State<PlanListView> {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? const Color(0xffFFFFFF)
+                      : const Color(0xff545454), // AppBar background color
                   border: Border.all(color: Colors.grey.shade300),
                 ),
-                child: const Row(children: [
+                child: Row(children: [
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,15 +234,19 @@ class _PlanListViewState extends State<PlanListView> {
                             fontSize: 14,
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.w500,
-                            color: Colors.black87,
+                            color: themeProvider.themeMode == ThemeMode.light
+                                ? Colors.black
+                                : Colors.white,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                           children: [
                             Icon(
                               Icons.currency_rupee,
-                              color: Color(0xff000000),
+                              color: themeProvider.themeMode == ThemeMode.light
+                                  ? Colors.black
+                                  : Colors.white,
                               size: 14,
                             ),
                             Text(
@@ -201,7 +255,10 @@ class _PlanListViewState extends State<PlanListView> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: "Poppins",
-                                color: Color(0xff000000),
+                                color:
+                                    themeProvider.themeMode == ThemeMode.light
+                                        ? Colors.black
+                                        : Colors.white,
                               ),
                             ),
                           ],
@@ -211,9 +268,11 @@ class _PlanListViewState extends State<PlanListView> {
                   ),
                   Row(children: [
                     Icon(Icons.drive_file_rename_outline,
-                        color: Color(0xff000000)),
-                    SizedBox(width: 8),
-                    Icon(Icons.delete, color: Colors.red),
+                        color: themeProvider.themeMode == ThemeMode.light
+                            ? Colors.black
+                            : Colors.white),
+                    const SizedBox(width: 8),
+                    const Icon(Icons.delete, color: Colors.red),
                   ]),
                 ]),
               ),

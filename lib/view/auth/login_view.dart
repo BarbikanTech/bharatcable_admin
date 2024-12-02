@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../themeprovider_view.dart';
 import '../landing_view.dart';
 
 class LoginpageView extends StatefulWidget {
@@ -16,14 +18,22 @@ class _LoginpageViewState extends State<LoginpageView> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : Colors.black,
       body: SafeArea(
         child: Stack(
           children: [
             Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
+              decoration: BoxDecoration(
+                color: themeProvider.themeMode == ThemeMode.light
+                    ? const Color(0xffFFFFFF)
+                    : Colors
+                        .black, // AppBar background color// AppBar // AppBar background color
+                image: const DecorationImage(
                   image: AssetImage("assets/back.png"),
                   fit: BoxFit.cover,
                 ),
@@ -62,19 +72,25 @@ class _LoginpageViewState extends State<LoginpageView> {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  const Text(
+                  Text(
                     "Login",
                     style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff000000)),
+                      fontSize: 32,
+                      fontWeight: FontWeight.w600,
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? Colors.black
+                          : Colors.white,
+                    ),
                   ),
-                  const Text(
+                  Text(
                     "Let fill up this form and fill it correctly",
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0Xff000000)),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? Colors.black
+                          : Colors.white,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   ClipRRect(
@@ -87,7 +103,9 @@ class _LoginpageViewState extends State<LoginpageView> {
                       width: double.infinity,
                       padding: const EdgeInsets.only(
                           left: 20, right: 20, bottom: 20, top: 20),
-                      color: const Color(0xffE8F4FF),
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xffFFFFFF)
+                          : const Color(0xff7D7D7D), // AppBar background color
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -98,12 +116,16 @@ class _LoginpageViewState extends State<LoginpageView> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Mobile",
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xff000000)),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                      color: themeProvider.themeMode ==
+                                              ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
                                   ),
                                   const SizedBox(
                                     height: 05,
@@ -116,10 +138,16 @@ class _LoginpageViewState extends State<LoginpageView> {
                                       keyboardType: TextInputType.phone,
                                       decoration: InputDecoration(
                                         filled: true,
-                                        fillColor: const Color(0xffFFFFFF),
+                                        fillColor: themeProvider.themeMode ==
+                                                ThemeMode.light
+                                            ? Colors.grey.shade100
+                                            : const Color(0xff434343),
                                         hintText: '9876098765',
-                                        hintStyle: const TextStyle(
-                                            color: Color(0xff838383),
+                                        hintStyle: TextStyle(
+                                            color: themeProvider.themeMode ==
+                                                    ThemeMode.light
+                                                ? Colors.black
+                                                : Colors.white,
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400),
                                         prefixIcon: Padding(
@@ -161,11 +189,15 @@ class _LoginpageViewState extends State<LoginpageView> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Password",
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
+                                      color: themeProvider.themeMode ==
+                                              ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
                                     ),
                                   ),
                                   const SizedBox(
@@ -179,10 +211,16 @@ class _LoginpageViewState extends State<LoginpageView> {
                                       obscureText: _obscurePassword,
                                       decoration: InputDecoration(
                                         filled: true,
-                                        fillColor: const Color(0xffFFFFFF),
+                                        fillColor: themeProvider.themeMode ==
+                                                ThemeMode.light
+                                            ? Colors.grey.shade100
+                                            : const Color(0xff434343),
                                         hintText: 'Enter your password',
-                                        hintStyle: const TextStyle(
-                                            color: Color(0xff838383),
+                                        hintStyle: TextStyle(
+                                            color: themeProvider.themeMode ==
+                                                    ThemeMode.light
+                                                ? Colors.black
+                                                : Colors.white,
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400),
                                         prefixIcon: Padding(
@@ -252,10 +290,13 @@ class _LoginpageViewState extends State<LoginpageView> {
                                             builder: (context) =>
                                                 const LandingView()));
                                   },
-                                  child: const Text(
+                                  child: Text(
                                     "Get Started",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: themeProvider.themeMode ==
+                                              ThemeMode.light
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),

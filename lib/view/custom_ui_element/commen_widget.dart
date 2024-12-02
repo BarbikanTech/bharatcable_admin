@@ -10,6 +10,7 @@ Future<bool?> confirmationDialog(
   return await showDialog(
     context: context,
     builder: (context) {
+      // ignore: deprecated_member_use
       return WillPopScope(
         onWillPop: () async => false,
         child: CupertinoAlertDialog(
@@ -43,6 +44,7 @@ Future<bool?> confirmationDialogNew(
   return await showDialog(
     context: context,
     builder: (context) {
+      // ignore: deprecated_member_use
       return WillPopScope(
         onWillPop: () async => false,
         child: CupertinoAlertDialog(
@@ -132,6 +134,7 @@ class _CartFormAlertState extends State<CartFormAlert> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return WillPopScope(
       child: AlertDialog(
         title: Text(widget.title),

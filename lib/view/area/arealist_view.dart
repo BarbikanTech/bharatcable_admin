@@ -2,6 +2,9 @@ import 'package:bharatcable_admin/view/area/areacreation_view.dart';
 import 'package:bharatcable_admin/view/landing_view.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
+
+import '../../themeprovider_view.dart';
 
 class ArealistView extends StatefulWidget {
   const ArealistView({super.key});
@@ -13,8 +16,11 @@ class ArealistView extends StatefulWidget {
 class _AreaListViewState extends State<ArealistView> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : const Color(0xff545454),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40),
         child: Container(
@@ -39,7 +45,12 @@ class _AreaListViewState extends State<ArealistView> {
             ),
             centerTitle: false,
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              icon: Icon(
+                Icons.arrow_back,
+                color: themeProvider.themeMode == ThemeMode.light
+                    ? Colors.black
+                    : Colors.white,
+              ),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -49,7 +60,9 @@ class _AreaListViewState extends State<ArealistView> {
                 );
               },
             ),
-            backgroundColor: Colors.transparent,
+            backgroundColor: themeProvider.themeMode == ThemeMode.light
+                ? const Color(0xffFFFFFF)
+                : const Color(0xff2B2B2B),
             elevation: 0,
             actions: [
               GestureDetector(
@@ -62,6 +75,9 @@ class _AreaListViewState extends State<ArealistView> {
                   );
                 },
                 child: Container(
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? const Color(0xffFFFFFF)
+                      : const Color(0xff2B2B2B), // AppBar background color
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: const Row(
@@ -97,8 +113,15 @@ class _AreaListViewState extends State<ArealistView> {
                     onEditingComplete: () {},
                     decoration: InputDecoration(
                       hintText: "Search",
+                      hintStyle: TextStyle(
+                        color: themeProvider.themeMode == ThemeMode.light
+                            ? Colors.black
+                            : Colors.white,
+                      ),
                       filled: true,
-                      fillColor: Colors.white70,
+                      fillColor: themeProvider.themeMode == ThemeMode.light
+                          ? Colors.grey.shade100
+                          : const Color(0xff434343),
                       prefixIcon: const Icon(Iconsax.search_normal),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -123,16 +146,22 @@ class _AreaListViewState extends State<ArealistView> {
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: themeProvider.themeMode == ThemeMode.light
+                        ? const Color(0xffFFFFFF)
+                        : const Color(0xff2B2B2B), // AppBar background color
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                      color: const Color(0xff78C2FF),
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xff1190F9)
+                          : const Color(0xff2B2B2B), // AppBar background color
                     ),
                   ),
                   child: IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.filter_list,
-                      color: Color(0xff1190F9),
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xff1190F9)
+                          : const Color(0xff1190F9),
                     ),
                     onPressed: () {
                       // Implement filter functionality
@@ -159,11 +188,14 @@ class _AreaListViewState extends State<ArealistView> {
                       margin: const EdgeInsets.only(bottom: 10),
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
+                        color: themeProvider.themeMode == ThemeMode.light
+                            ? const Color(0xffFFFFFF)
+                            : const Color(
+                                0xff2B2B2B), // AppBar background color
                         border: Border.all(color: Colors.grey.shade300),
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
                       ),
-                      child: const Row(
+                      child: Row(
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,17 +205,24 @@ class _AreaListViewState extends State<ArealistView> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: "Poppins",
-                                  color: Colors.black54,
+                                  color:
+                                      themeProvider.themeMode == ThemeMode.light
+                                          ? Colors.black
+                                          : Colors.white,
                                 ),
                               ),
                             ],
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Row(children: [
-                            Icon(Icons.drive_file_rename_outline,
-                                color: Color(0xff000000)),
-                            SizedBox(width: 8),
-                            Icon(Icons.delete, color: Colors.red),
+                            Icon(
+                              Icons.drive_file_rename_outline,
+                              color: themeProvider.themeMode == ThemeMode.light
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                            const SizedBox(width: 8),
+                            const Icon(Icons.delete, color: Colors.red),
                           ]),
                         ],
                       ),

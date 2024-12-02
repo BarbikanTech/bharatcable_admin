@@ -6,6 +6,7 @@ Future popUpAlertBox(context,
     context: context,
     barrierDismissible: false,
     builder: (context) {
+      // ignore: deprecated_member_use
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
@@ -36,6 +37,7 @@ popUpLoading(context) {
     barrierDismissible: false,
     context: context,
     builder: (context) {
+      // ignore: deprecated_member_use
       return WillPopScope(
         onWillPop: () async => false,
         child: Center(

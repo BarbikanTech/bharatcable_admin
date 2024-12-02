@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../themeprovider_view.dart';
 
 class CustomerView extends StatefulWidget {
   const CustomerView({super.key});
@@ -10,9 +13,14 @@ class CustomerView extends StatefulWidget {
 class _CustomerViewState extends State<CustomerView> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.themeMode == ThemeMode.light
+          ? const Color(0xffFFFFFF)
+          : const Color(0xff545454),
       appBar: AppBar(
-        title: const Text('Customer'),
+        title: const Text('Customer Details'),
+        backgroundColor: const Color(0xffFFFFFF),
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
@@ -26,9 +34,15 @@ class _CustomerViewState extends State<CustomerView> {
           Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.1),
+              color: themeProvider.themeMode == ThemeMode.light
+                  ? const Color(0xffFFFFFF)
+                  : const Color(0xff2B2B2B),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.blue),
+              border: Border.all(
+                color: themeProvider.themeMode == ThemeMode.light
+                    ? const Color(0xff2B2B2B)
+                    : const Color(0xffFFFFFF),
+              ),
             ),
             child: const Column(
               children: [
@@ -93,9 +107,15 @@ class _CustomerViewState extends State<CustomerView> {
                   width: 120,
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Colors.blue.withOpacity(0.1),
+                    color: themeProvider.themeMode == ThemeMode.light
+                        ? const Color(0xffFFFFFF)
+                        : const Color(0xff2B2B2B),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.blue),
+                    border: Border.all(
+                      color: themeProvider.themeMode == ThemeMode.light
+                          ? const Color(0xff545454)
+                          : const Color(0xffFFFFFF),
+                    ),
                   ),
                   child: const Column(
                     children: [
@@ -130,13 +150,15 @@ class _CustomerViewState extends State<CustomerView> {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
+                  color: themeProvider.themeMode == ThemeMode.light
+                      ? const Color(0xffFFFFFF)
+                      : const Color(0xff2B2B2B),
                   border: Border.all(color: Colors.grey.shade300),
                 ),
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Text(
                           "Last month",
@@ -150,26 +172,30 @@ class _CustomerViewState extends State<CustomerView> {
                           Text(
                             "Pending",
                             style: TextStyle(
-                              fontSize: 14,
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black87,
-                            ),
+                                fontSize: 14,
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w500,
+                                color:
+                                    themeProvider.themeMode == ThemeMode.light
+                                        ? Colors.black
+                                        : Colors.white),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text(
                             "Payment by G-pay",
                             style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Poppins",
-                              color: Colors.black54,
-                            ),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Poppins",
+                                color:
+                                    themeProvider.themeMode == ThemeMode.light
+                                        ? Colors.black
+                                        : Colors.white),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                   ],
                 ),
               );
